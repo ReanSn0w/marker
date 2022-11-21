@@ -26,13 +26,21 @@ type Node struct {
 func (n *Node) Build(ctx context.Context, wr io.Writer) {
 	builder := GetBuilder(ctx)
 
-	wr.Write([]byte(fmt.Sprintf("\n<%s%s>", n.Name, n.Attr.String())))
+	switch n.Name {
+	case "img", "br", "hr", "input", "meta", "link", "base", "area", "col", "param", "source", "track", "wbr":
+		wr.Write([]byte(fmt.Sprintf("\n<%s%s>", n.Name, n.Attr.String())))
+		return
+	default:
+		wr.Write([]byte(fmt.Sprintf("\n<%s%s>", n.Name, n.Attr.String())))
+	}
 
 	if item, ok := n.Content.(view.View); ok {
 		builder.Build(ctx, wr, item)
 	} else {
-		wr.Write([]byte("\n"))
-		wr.Write([]byte(fmt.Sprintf("%v", n.Content)))
+		if n.Content != nil {
+			wr.Write([]byte("\n"))
+			wr.Write([]byte(fmt.Sprintf("%v", n.Content)))
+		}
 	}
 
 	wr.Write([]byte(fmt.Sprintf("\n</%s>", n.Name)))
