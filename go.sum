@@ -1,8 +1,4 @@
-github.com/ReanSn0w/gew v1.1.1 h1:ISvDOaeBgHWjK5VvLhHBFz0Zx2/AZk/QzPSsRupD0l0=
-github.com/ReanSn0w/gew v1.1.1/go.mod h1:dCMpxsqSdDnbZhUeJkIJEscdlND8FAnbmOSPAoV2x3o=
-github.com/ReanSn0w/gobase v0.10.0 h1:jDLPsAGc+ltTA//orYrbzmlafLTjrabpq5Q9P2ba1Pg=
-github.com/ReanSn0w/gobase v0.10.0/go.mod h1:TiI5EwqfwBFzzjJ5Ot/ywfxzWthdHxx9Qz3FjL318cQ=
+github.com/ReanSn0w/gew v1.2.2 h1:aOkhtW4VtTly2IXCzpM2OIBczYzv9SF3OyEgMcNGBO8=
+github.com/ReanSn0w/gew v1.2.2/go.mod h1:dCMpxsqSdDnbZhUeJkIJEscdlND8FAnbmOSPAoV2x3o=
 github.com/go-chi/chi v1.5.4 h1:QHdzF2szwjqVV4wmByUnTcsbIg7UGaQ0tPF2t5GcAIs=
 github.com/go-chi/chi v1.5.4/go.mod h1:uaf8YgoFazUOkPBG7fxPftUylNumIev9awIWOENIuEg=
-github.com/umputun/go-flags v1.5.1 h1:vRauoXV3Ultt1HrxivSxowbintgZLJE+EcBy5ta3/mY=
-github.com/umputun/go-flags v1.5.1/go.mod h1:nTbvsO/hKqe7Utri/NoyN18GR3+EWf+9RrmsdwdhrEc=
