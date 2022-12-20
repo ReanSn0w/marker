@@ -1,11 +1,10 @@
 package attr
 
 import (
-	"github.com/ReanSn0w/gew/pkg/view"
-	"github.com/ReanSn0w/marker/pkg/base"
+	"github.com/ReanSn0w/gew/v2/pkg/view"
 )
 
-func If(condition bool, modificator base.TagModificator) base.TagModificator {
+func If(condition bool, modificator view.Modificator) view.Modificator {
 	if !condition {
 		return nil
 	}
@@ -13,7 +12,7 @@ func If(condition bool, modificator base.TagModificator) base.TagModificator {
 	return modificator
 }
 
-func Group(modificators ...base.TagModificator) base.TagModificator {
+func Group(modificators ...view.Modificator) view.Modificator {
 	return func(tag view.View) view.View {
 		for _, mod := range modificators {
 			if mod == nil {

@@ -4,7 +4,7 @@ import (
 	"context"
 	"io"
 
-	"github.com/ReanSn0w/gew/pkg/view"
+	"github.com/ReanSn0w/gew/v2/pkg/view"
 )
 
 const (
@@ -25,17 +25,11 @@ const (
 
 type InlineTagName string
 
-func Inline(tag InlineTagName, modificators ...TagModificator) view.View {
-	var item view.View = &inlineTag{
+func Inline(tag InlineTagName) view.ModificationApplyer {
+	return view.NewModificationApplyer(&inlineTag{
 		tag:        tag,
 		attributes: Attributes{},
-	}
-
-	for _, m := range modificators {
-		item = m(item)
-	}
-
-	return item
+	})
 }
 
 type inlineTag struct {

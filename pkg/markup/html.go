@@ -1,446 +1,446 @@
 package markup
 
 import (
-	"github.com/ReanSn0w/gew/pkg/view"
+	"github.com/ReanSn0w/gew/v2/pkg/view"
 	"github.com/ReanSn0w/marker/pkg/base"
 )
 
-func A(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("a", content...)
+func A(content ...view.View) view.ModificationApplyer {
+	return base.Container("a")(content...)
 }
 
-func Abbr(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("abbr", content...)
+func Abbr(content ...view.View) view.ModificationApplyer {
+	return base.Container("abbr")(content...)
 }
 
-func Address(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("address", content...)
+func Address(content ...view.View) view.ModificationApplyer {
+	return base.Container("address")(content...)
 }
 
-func Area(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("area", content...)
+func Area(content ...view.View) view.ModificationApplyer {
+	return base.Container("area")(content...)
 }
 
-func Article(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("article", content...)
+func Article(content ...view.View) view.ModificationApplyer {
+	return base.Container("article")(content...)
 }
 
-func Aside(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("aside", content...)
+func Aside(content ...view.View) view.ModificationApplyer {
+	return base.Container("aside")(content...)
 }
 
-func Audio(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("audio", content...)
+func Audio(content ...view.View) view.ModificationApplyer {
+	return base.Container("audio")(content...)
 }
 
-func B(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("b", content...)
+func B(content ...view.View) view.ModificationApplyer {
+	return base.Container("b")(content...)
 }
 
-func Base(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("base", content...)
+func Base(content ...view.View) view.ModificationApplyer {
+	return base.Container("base")(content...)
 }
 
-func Bdi(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("bdi", content...)
+func Bdi(content ...view.View) view.ModificationApplyer {
+	return base.Container("bdi")(content...)
 }
 
-func Bdo(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("bdo", content...)
+func Bdo(content ...view.View) view.ModificationApplyer {
+	return base.Container("bdo")(content...)
 }
 
-func Blockquote(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("blockquote", content...)
+func Blockquote(content ...view.View) view.ModificationApplyer {
+	return base.Container("blockquote")(content...)
 }
 
-func Body(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("body", content...)
+func Body(content ...view.View) view.ModificationApplyer {
+	return base.Container("body")(content...)
 }
 
-func Br(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("br", content...)
+func Br(content ...view.View) view.ModificationApplyer {
+	return base.Container("br")(content...)
 }
 
-func Button(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("button", content...)
+func Button(content ...view.View) view.ModificationApplyer {
+	return base.Container("button")(content...)
 }
 
-func Canvas(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("canvas", content...)
+func Canvas(content ...view.View) view.ModificationApplyer {
+	return base.Container("canvas")(content...)
 }
 
-func Caption(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("caption", content...)
+func Caption(content ...view.View) view.ModificationApplyer {
+	return base.Container("caption")(content...)
 }
 
-func Cite(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("cite", content...)
+func Cite(content ...view.View) view.ModificationApplyer {
+	return base.Container("cite")(content...)
 }
 
-func Code(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("code", content...)
+func Code(content ...view.View) view.ModificationApplyer {
+	return base.Container("code")(content...)
 }
 
-func Col(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("col", content...)
+func Col(content ...view.View) view.ModificationApplyer {
+	return base.Container("col")(content...)
 }
 
-func Colgroup(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("colgroup", content...)
+func Colgroup(content ...view.View) view.ModificationApplyer {
+	return base.Container("colgroup")(content...)
 }
 
-func Data(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("data", content...)
+func Data(content ...view.View) view.ModificationApplyer {
+	return base.Container("data")(content...)
 }
 
-func Datalist(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("datalist", content...)
+func Datalist(content ...view.View) view.ModificationApplyer {
+	return base.Container("datalist")(content...)
 }
 
-func Dd(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("dd", content...)
+func Dd(content ...view.View) view.ModificationApplyer {
+	return base.Container("dd")(content...)
 }
 
-func Del(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("del", content...)
+func Del(content ...view.View) view.ModificationApplyer {
+	return base.Container("del")(content...)
 }
 
-func Details(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("details", content...)
+func Details(content ...view.View) view.ModificationApplyer {
+	return base.Container("details")(content...)
 }
 
-func Dfn(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("dfn", content...)
+func Dfn(content ...view.View) view.ModificationApplyer {
+	return base.Container("dfn")(content...)
 }
 
-func Dialog(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("dialog", content...)
+func Dialog(content ...view.View) view.ModificationApplyer {
+	return base.Container("dialog")(content...)
 }
 
-func Div(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("div", content...)
+func Div(content ...view.View) view.ModificationApplyer {
+	return base.Container("div")(content...)
 }
 
-func Dl(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("dl", content...)
+func Dl(content ...view.View) view.ModificationApplyer {
+	return base.Container("dl")(content...)
 }
 
-func Dt(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("dt", content...)
+func Dt(content ...view.View) view.ModificationApplyer {
+	return base.Container("dt")(content...)
 }
 
-func Em(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("em", content...)
+func Em(content ...view.View) view.ModificationApplyer {
+	return base.Container("em")(content...)
 }
 
-func Embed(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("embed", content...)
+func Embed(content ...view.View) view.ModificationApplyer {
+	return base.Container("embed")(content...)
 }
 
-func Fieldset(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("fieldset", content...)
+func Fieldset(content ...view.View) view.ModificationApplyer {
+	return base.Container("fieldset")(content...)
 }
 
-func Figcaption(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("figcaption", content...)
+func Figcaption(content ...view.View) view.ModificationApplyer {
+	return base.Container("figcaption")(content...)
 }
 
-func Figure(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("figure", content...)
+func Figure(content ...view.View) view.ModificationApplyer {
+	return base.Container("figure")(content...)
 }
 
-func Footer(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("footer", content...)
+func Footer(content ...view.View) view.ModificationApplyer {
+	return base.Container("footer")(content...)
 }
 
-func Form(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("form", content...)
+func Form(content ...view.View) view.ModificationApplyer {
+	return base.Container("form")(content...)
 }
 
-func H1(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("h1", content...)
+func H1(content ...view.View) view.ModificationApplyer {
+	return base.Container("h1")(content...)
 }
 
-func H2(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("h2", content...)
+func H2(content ...view.View) view.ModificationApplyer {
+	return base.Container("h2")(content...)
 }
 
-func H3(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("h3", content...)
+func H3(content ...view.View) view.ModificationApplyer {
+	return base.Container("h3")(content...)
 }
 
-func H4(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("h4", content...)
+func H4(content ...view.View) view.ModificationApplyer {
+	return base.Container("h4")(content...)
 }
 
-func H5(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("h5", content...)
+func H5(content ...view.View) view.ModificationApplyer {
+	return base.Container("h5")(content...)
 }
 
-func H6(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("h6", content...)
+func H6(content ...view.View) view.ModificationApplyer {
+	return base.Container("h6")(content...)
 }
 
-func Head(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("head", content...)
+func Head(content ...view.View) view.ModificationApplyer {
+	return base.Container("head")(content...)
 }
 
-func Header(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("header", content...)
+func Header(content ...view.View) view.ModificationApplyer {
+	return base.Container("header")(content...)
 }
 
-func Hgroup(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("hgroup", content...)
+func Hgroup(content ...view.View) view.ModificationApplyer {
+	return base.Container("hgroup")(content...)
 }
 
-func Hr(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("hr", content...)
+func Hr(content ...view.View) view.ModificationApplyer {
+	return base.Container("hr")(content...)
 }
 
-func Html(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("html", content...)
+func Html(content ...view.View) view.ModificationApplyer {
+	return base.Container("html")(content...)
 }
 
-func I(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("i", content...)
+func I(content ...view.View) view.ModificationApplyer {
+	return base.Container("i")(content...)
 }
 
-func Iframe(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("iframe", content...)
+func Iframe(content ...view.View) view.ModificationApplyer {
+	return base.Container("iframe")(content...)
 }
 
-func Img(mod ...base.TagModificator) view.View {
-	return base.Inline("img", mod...)
+func Img() view.ModificationApplyer {
+	return base.Inline("img")
 }
 
-func Input(mod ...base.TagModificator) view.View {
-	return base.Inline("input", mod...)
+func Input() view.ModificationApplyer {
+	return base.Inline("input")
 }
 
-func Ins(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("ins", content...)
+func Ins(content ...view.View) view.ModificationApplyer {
+	return base.Container("ins")(content...)
 }
 
-func Kbd(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("kbd", content...)
+func Kbd(content ...view.View) view.ModificationApplyer {
+	return base.Container("kbd")(content...)
 }
 
-func Label(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("label", content...)
+func Label(content ...view.View) view.ModificationApplyer {
+	return base.Container("label")(content...)
 }
 
-func Legend(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("legend", content...)
+func Legend(content ...view.View) view.ModificationApplyer {
+	return base.Container("legend")(content...)
 }
 
-func Li(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("li", content...)
+func Li(content ...view.View) view.ModificationApplyer {
+	return base.Container("li")(content...)
 }
 
-func Link(mod ...base.TagModificator) view.View {
-	return base.Inline("link", mod...)
+func Link() view.ModificationApplyer {
+	return base.Inline("link")
 }
 
-func Main(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("main", content...)
+func Main(content ...view.View) view.ModificationApplyer {
+	return base.Container("main")(content...)
 }
 
-func Map(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("map", content...)
+func Map(content ...view.View) view.ModificationApplyer {
+	return base.Container("map")(content...)
 }
 
-func Mark(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("mark", content...)
+func Mark(content ...view.View) view.ModificationApplyer {
+	return base.Container("mark")(content...)
 }
 
-func Menu(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("menu", content...)
+func Menu(content ...view.View) view.ModificationApplyer {
+	return base.Container("menu")(content...)
 }
 
-func Menuitem(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("menuitem", content...)
+func Menuitem(content ...view.View) view.ModificationApplyer {
+	return base.Container("menuitem")(content...)
 }
 
-func Meta(mod ...base.TagModificator) view.View {
-	return base.Inline("meta", mod...)
+func Meta() view.ModificationApplyer {
+	return base.Inline("meta")
 }
 
-func Meter(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("meter", content...)
+func Meter(content ...view.View) view.ModificationApplyer {
+	return base.Container("meter")(content...)
 }
 
-func Nav(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("nav", content...)
+func Nav(content ...view.View) view.ModificationApplyer {
+	return base.Container("nav")(content...)
 }
 
-func Noscript(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("noscript", content...)
+func Noscript(content ...view.View) view.ModificationApplyer {
+	return base.Container("noscript")(content...)
 }
 
-func Object(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("object", content...)
+func Object(content ...view.View) view.ModificationApplyer {
+	return base.Container("object")(content...)
 }
 
-func Ol(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("ol", content...)
+func Ol(content ...view.View) view.ModificationApplyer {
+	return base.Container("ol")(content...)
 }
 
-func Optgroup(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("optgroup", content...)
+func Optgroup(content ...view.View) view.ModificationApplyer {
+	return base.Container("optgroup")(content...)
 }
 
-func Option(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("option", content...)
+func Option(content ...view.View) view.ModificationApplyer {
+	return base.Container("option")(content...)
 }
 
-func Output(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("output", content...)
+func Output(content ...view.View) view.ModificationApplyer {
+	return base.Container("output")(content...)
 }
 
-func P(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("p", content...)
+func P(content ...view.View) view.ModificationApplyer {
+	return base.Container("p")(content...)
 }
 
-func Param(mod ...base.TagModificator) view.View {
-	return base.Inline("param", mod...)
+func Param() view.ModificationApplyer {
+	return base.Inline("param")
 }
 
-func Pre(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("pre", content...)
+func Pre(content ...view.View) view.ModificationApplyer {
+	return base.Container("pre")(content...)
 }
 
-func Progress(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("progress", content...)
+func Progress(content ...view.View) view.ModificationApplyer {
+	return base.Container("progress")(content...)
 }
 
-func Q(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("q", content...)
+func Q(content ...view.View) view.ModificationApplyer {
+	return base.Container("q")(content...)
 }
 
-func Rp(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("rp", content...)
+func Rp(content ...view.View) view.ModificationApplyer {
+	return base.Container("rp")(content...)
 }
 
-func Rt(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("rt", content...)
+func Rt(content ...view.View) view.ModificationApplyer {
+	return base.Container("rt")(content...)
 }
 
-func Ruby(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("ruby", content...)
+func Ruby(content ...view.View) view.ModificationApplyer {
+	return base.Container("ruby")(content...)
 }
 
-func S(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("s", content...)
+func S(content ...view.View) view.ModificationApplyer {
+	return base.Container("s")(content...)
 }
 
-func Samp(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("samp", content...)
+func Samp(content ...view.View) view.ModificationApplyer {
+	return base.Container("samp")(content...)
 }
 
-func Script(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("script", content...)
+func Script(content ...view.View) view.ModificationApplyer {
+	return base.Container("script")(content...)
 }
 
-func Section(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("section", content...)
+func Section(content ...view.View) view.ModificationApplyer {
+	return base.Container("section")(content...)
 }
 
-func Select(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("select", content...)
+func Select(content ...view.View) view.ModificationApplyer {
+	return base.Container("select")(content...)
 }
 
-func Small(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("small", content...)
+func Small(content ...view.View) view.ModificationApplyer {
+	return base.Container("small")(content...)
 }
 
-func Source(mod ...base.TagModificator) view.View {
-	return base.Inline("source", mod...)
+func Source() view.ModificationApplyer {
+	return base.Inline("source")
 }
 
-func Span(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("span", content...)
+func Span(content ...view.View) view.ModificationApplyer {
+	return base.Container("span")(content...)
 }
 
-func Strong(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("strong", content...)
+func Strong(content ...view.View) view.ModificationApplyer {
+	return base.Container("strong")(content...)
 }
 
-func Style(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("style", content...)
+func Style(content ...view.View) view.ModificationApplyer {
+	return base.Container("style")(content...)
 }
 
-func Sub(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("sub", content...)
+func Sub(content ...view.View) view.ModificationApplyer {
+	return base.Container("sub")(content...)
 }
 
-func Summary(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("summary", content...)
+func Summary(content ...view.View) view.ModificationApplyer {
+	return base.Container("summary")(content...)
 }
 
-func Sup(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("sup", content...)
+func Sup(content ...view.View) view.ModificationApplyer {
+	return base.Container("sup")(content...)
 }
 
-func Table(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("table", content...)
+func Table(content ...view.View) view.ModificationApplyer {
+	return base.Container("table")(content...)
 }
 
-func Tbody(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("tbody", content...)
+func Tbody(content ...view.View) view.ModificationApplyer {
+	return base.Container("tbody")(content...)
 }
 
-func Td(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("td", content...)
+func Td(content ...view.View) view.ModificationApplyer {
+	return base.Container("td")(content...)
 }
 
-func Textarea(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("textarea", content...)
+func Textarea(content ...view.View) view.ModificationApplyer {
+	return base.Container("textarea")(content...)
 }
 
-func Tfoot(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("tfoot", content...)
+func Tfoot(content ...view.View) view.ModificationApplyer {
+	return base.Container("tfoot")(content...)
 }
 
-func Th(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("th", content...)
+func Th(content ...view.View) view.ModificationApplyer {
+	return base.Container("th")(content...)
 }
 
-func Thead(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("thead", content...)
+func Thead(content ...view.View) view.ModificationApplyer {
+	return base.Container("thead")(content...)
 }
 
-func Time(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("time", content...)
+func Time(content ...view.View) view.ModificationApplyer {
+	return base.Container("time")(content...)
 }
 
-func Title(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("title", content...)
+func Title(content ...view.View) view.ModificationApplyer {
+	return base.Container("title")(content...)
 }
 
-func Tr(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("tr", content...)
+func Tr(content ...view.View) view.ModificationApplyer {
+	return base.Container("tr")(content...)
 }
 
-func Track(mod ...base.TagModificator) view.View {
-	return base.Inline("track", mod...)
+func Track() view.ModificationApplyer {
+	return base.Inline("track")
 }
 
-func U(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("u", content...)
+func U(content ...view.View) view.ModificationApplyer {
+	return base.Container("u")(content...)
 }
 
-func Ul(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("ul", content...)
+func Ul(content ...view.View) view.ModificationApplyer {
+	return base.Container("ul")(content...)
 }
 
-func Var(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("var", content...)
+func Var(content ...view.View) view.ModificationApplyer {
+	return base.Container("var")(content...)
 }
 
-func Video(content ...view.View) base.ContainerModificator {
-	return basicContainerTag("video", content...)
+func Video(content ...view.View) view.ModificationApplyer {
+	return base.Container("video")(content...)
 }
 
-func Wbr(mod ...base.TagModificator) view.View {
-	return base.Inline("wbr", mod...)
+func Wbr() view.ModificationApplyer {
+	return base.Inline("wbr")
 }

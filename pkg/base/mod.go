@@ -1,10 +1,8 @@
 package base
 
-import "github.com/ReanSn0w/gew/pkg/view"
+import "github.com/ReanSn0w/gew/v2/pkg/view"
 
-type TagModificator func(view.View) view.View
-
-func SetAttribute(key, value string) TagModificator {
+func SetAttribute(key, value string) view.Modificator {
 	return func(v view.View) view.View {
 		item := getAttributeEditor(v)
 		item.Set(key, value)
@@ -12,7 +10,7 @@ func SetAttribute(key, value string) TagModificator {
 	}
 }
 
-func AppendAttribute(key, value string) TagModificator {
+func AppendAttribute(key, value string) view.Modificator {
 	return func(v view.View) view.View {
 		item := getAttributeEditor(v)
 		item.Append(key, value)
@@ -20,7 +18,7 @@ func AppendAttribute(key, value string) TagModificator {
 	}
 }
 
-func PrepareAttribute(key string, prepare func(string) string) TagModificator {
+func PrepareAttribute(key string, prepare func(string) string) view.Modificator {
 	return func(v view.View) view.View {
 		item := getAttributeEditor(v)
 		current := item.Get(key)
@@ -29,7 +27,7 @@ func PrepareAttribute(key string, prepare func(string) string) TagModificator {
 	}
 }
 
-func DeleteAttribute(key string) TagModificator {
+func DeleteAttribute(key string) view.Modificator {
 	return func(v view.View) view.View {
 		item := getAttributeEditor(v)
 		item.Delete(key)
@@ -37,16 +35,16 @@ func DeleteAttribute(key string) TagModificator {
 	}
 }
 
-func PlaceInContainer(tag ContainerTagName) TagModificator {
+func PlaceInContainer(tag ContainerTagName) view.Modificator {
 	return func(v view.View) view.View {
-		return Container(tag, v)()
+		return Container(tag)(v)()
 	}
 }
 
 func getAttributeEditor(v view.View) AttributeEditor {
 	item, ok := v.(AttributeEditor)
 	if !ok {
-		item = Container("div", v)().(*containerTag)
+		item = Container("div")(v)().(*containerTag)
 	}
 
 	return item

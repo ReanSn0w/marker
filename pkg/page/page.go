@@ -4,7 +4,7 @@ import (
 	"context"
 	"io"
 
-	"github.com/ReanSn0w/gew/pkg/view"
+	"github.com/ReanSn0w/gew/v2/pkg/view"
 	"github.com/ReanSn0w/marker/pkg/base"
 	"github.com/ReanSn0w/marker/pkg/markup"
 )

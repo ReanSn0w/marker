@@ -4,20 +4,14 @@ import (
 	"context"
 	"io"
 
-	"github.com/ReanSn0w/gew/pkg/view"
+	"github.com/ReanSn0w/gew/v2/pkg/view"
 )
 
 type ContainerTagName string
 
-type ContainerModificator func(modificators ...TagModificator) view.View
-
-func (cm ContainerModificator) Body(ctx context.Context) view.View {
-	return cm()
-}
-
-func Container(tag ContainerTagName, content ...interface{}) ContainerModificator {
-	return func(modificators ...TagModificator) view.View {
-		var item view.View = &containerTag{
+func Container(tag ContainerTagName) view.Builder {
+	return func(content ...view.View) view.ModificationApplyer {
+		return view.NewModificationApplyer(&containerTag{
 			tag:        tag,
 			attributes: Attributes{},
 			content: func() view.View {
@@ -35,13 +29,7 @@ func Container(tag ContainerTagName, content ...interface{}) ContainerModificato
 
 				return view.Group(group...)
 			}(),
-		}
-
-		for _, m := range modificators {
-			item = m(item)
-		}
-
-		return item
+		})
 	}
 }
 
