@@ -1,4 +1,4 @@
-package base
+package marker
 
 import (
 	"context"
@@ -7,25 +7,7 @@ import (
 	"github.com/ReanSn0w/gew/v2/pkg/view"
 )
 
-const (
-	TagImg    InlineTagName = "img"
-	TagBr     InlineTagName = "br"
-	TagHr     InlineTagName = "hr"
-	TagInput  InlineTagName = "input"
-	TagMeta   InlineTagName = "meta"
-	TagLink   InlineTagName = "link"
-	TagBase   InlineTagName = "base"
-	TagArea   InlineTagName = "area"
-	TagCol    InlineTagName = "col"
-	TagParam  InlineTagName = "param"
-	TagSource InlineTagName = "source"
-	TagTrack  InlineTagName = "track"
-	TagWbr    InlineTagName = "wbr"
-)
-
-type InlineTagName string
-
-func Inline(tag InlineTagName) view.ModificationApplyer {
+func Inline(tag string) view.ModificationApplyer {
 	return view.NewModificationApplyer(&inlineTag{
 		tag:        tag,
 		attributes: Attributes{},
@@ -33,7 +15,7 @@ func Inline(tag InlineTagName) view.ModificationApplyer {
 }
 
 type inlineTag struct {
-	tag        InlineTagName
+	tag        string
 	attributes Attributes
 }
 

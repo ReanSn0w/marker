@@ -1,446 +1,465 @@
-package markup
+package marker
 
 import (
+	"fmt"
+
 	"github.com/ReanSn0w/gew/v2/pkg/view"
-	"github.com/ReanSn0w/marker/pkg/base"
 )
 
+func Doctype() view.View {
+	return view.External("<!DOCTYPE html>")
+}
+
+func Comment(val string) view.View {
+	return view.External("<!-- " + val + " -->")
+}
+
+func Text(val string) view.View {
+	return view.External(val)()
+}
+
+func Snippet(snippet string, values ...interface{}) view.View {
+	return view.External(fmt.Sprintf(snippet, values...))
+}
+
+// MARK: - HTML Tags
+
 func A(content ...view.View) view.ModificationApplyer {
-	return base.Container("a")(content...)
+	return Container("a")(content...)
 }
 
 func Abbr(content ...view.View) view.ModificationApplyer {
-	return base.Container("abbr")(content...)
+	return Container("abbr")(content...)
 }
 
 func Address(content ...view.View) view.ModificationApplyer {
-	return base.Container("address")(content...)
+	return Container("address")(content...)
 }
 
 func Area(content ...view.View) view.ModificationApplyer {
-	return base.Container("area")(content...)
+	return Container("area")(content...)
 }
 
 func Article(content ...view.View) view.ModificationApplyer {
-	return base.Container("article")(content...)
+	return Container("article")(content...)
 }
 
 func Aside(content ...view.View) view.ModificationApplyer {
-	return base.Container("aside")(content...)
+	return Container("aside")(content...)
 }
 
 func Audio(content ...view.View) view.ModificationApplyer {
-	return base.Container("audio")(content...)
+	return Container("audio")(content...)
 }
 
 func B(content ...view.View) view.ModificationApplyer {
-	return base.Container("b")(content...)
+	return Container("b")(content...)
 }
 
 func Base(content ...view.View) view.ModificationApplyer {
-	return base.Container("base")(content...)
+	return Container("base")(content...)
 }
 
 func Bdi(content ...view.View) view.ModificationApplyer {
-	return base.Container("bdi")(content...)
+	return Container("bdi")(content...)
 }
 
 func Bdo(content ...view.View) view.ModificationApplyer {
-	return base.Container("bdo")(content...)
+	return Container("bdo")(content...)
 }
 
 func Blockquote(content ...view.View) view.ModificationApplyer {
-	return base.Container("blockquote")(content...)
+	return Container("blockquote")(content...)
 }
 
 func Body(content ...view.View) view.ModificationApplyer {
-	return base.Container("body")(content...)
+	return Container("body")(content...)
 }
 
 func Br(content ...view.View) view.ModificationApplyer {
-	return base.Container("br")(content...)
+	return Container("br")(content...)
 }
 
 func Button(content ...view.View) view.ModificationApplyer {
-	return base.Container("button")(content...)
+	return Container("button")(content...)
 }
 
 func Canvas(content ...view.View) view.ModificationApplyer {
-	return base.Container("canvas")(content...)
+	return Container("canvas")(content...)
 }
 
 func Caption(content ...view.View) view.ModificationApplyer {
-	return base.Container("caption")(content...)
+	return Container("caption")(content...)
 }
 
 func Cite(content ...view.View) view.ModificationApplyer {
-	return base.Container("cite")(content...)
+	return Container("cite")(content...)
 }
 
 func Code(content ...view.View) view.ModificationApplyer {
-	return base.Container("code")(content...)
+	return Container("code")(content...)
 }
 
 func Col(content ...view.View) view.ModificationApplyer {
-	return base.Container("col")(content...)
+	return Container("col")(content...)
 }
 
 func Colgroup(content ...view.View) view.ModificationApplyer {
-	return base.Container("colgroup")(content...)
+	return Container("colgroup")(content...)
 }
 
 func Data(content ...view.View) view.ModificationApplyer {
-	return base.Container("data")(content...)
+	return Container("data")(content...)
 }
 
 func Datalist(content ...view.View) view.ModificationApplyer {
-	return base.Container("datalist")(content...)
+	return Container("datalist")(content...)
 }
 
 func Dd(content ...view.View) view.ModificationApplyer {
-	return base.Container("dd")(content...)
+	return Container("dd")(content...)
 }
 
 func Del(content ...view.View) view.ModificationApplyer {
-	return base.Container("del")(content...)
+	return Container("del")(content...)
 }
 
 func Details(content ...view.View) view.ModificationApplyer {
-	return base.Container("details")(content...)
+	return Container("details")(content...)
 }
 
 func Dfn(content ...view.View) view.ModificationApplyer {
-	return base.Container("dfn")(content...)
+	return Container("dfn")(content...)
 }
 
 func Dialog(content ...view.View) view.ModificationApplyer {
-	return base.Container("dialog")(content...)
+	return Container("dialog")(content...)
 }
 
 func Div(content ...view.View) view.ModificationApplyer {
-	return base.Container("div")(content...)
+	return Container("div")(content...)
 }
 
 func Dl(content ...view.View) view.ModificationApplyer {
-	return base.Container("dl")(content...)
+	return Container("dl")(content...)
 }
 
 func Dt(content ...view.View) view.ModificationApplyer {
-	return base.Container("dt")(content...)
+	return Container("dt")(content...)
 }
 
 func Em(content ...view.View) view.ModificationApplyer {
-	return base.Container("em")(content...)
+	return Container("em")(content...)
 }
 
 func Embed(content ...view.View) view.ModificationApplyer {
-	return base.Container("embed")(content...)
+	return Container("embed")(content...)
 }
 
 func Fieldset(content ...view.View) view.ModificationApplyer {
-	return base.Container("fieldset")(content...)
+	return Container("fieldset")(content...)
 }
 
 func Figcaption(content ...view.View) view.ModificationApplyer {
-	return base.Container("figcaption")(content...)
+	return Container("figcaption")(content...)
 }
 
 func Figure(content ...view.View) view.ModificationApplyer {
-	return base.Container("figure")(content...)
+	return Container("figure")(content...)
 }
 
 func Footer(content ...view.View) view.ModificationApplyer {
-	return base.Container("footer")(content...)
+	return Container("footer")(content...)
 }
 
 func Form(content ...view.View) view.ModificationApplyer {
-	return base.Container("form")(content...)
+	return Container("form")(content...)
 }
 
 func H1(content ...view.View) view.ModificationApplyer {
-	return base.Container("h1")(content...)
+	return Container("h1")(content...)
 }
 
 func H2(content ...view.View) view.ModificationApplyer {
-	return base.Container("h2")(content...)
+	return Container("h2")(content...)
 }
 
 func H3(content ...view.View) view.ModificationApplyer {
-	return base.Container("h3")(content...)
+	return Container("h3")(content...)
 }
 
 func H4(content ...view.View) view.ModificationApplyer {
-	return base.Container("h4")(content...)
+	return Container("h4")(content...)
 }
 
 func H5(content ...view.View) view.ModificationApplyer {
-	return base.Container("h5")(content...)
+	return Container("h5")(content...)
 }
 
 func H6(content ...view.View) view.ModificationApplyer {
-	return base.Container("h6")(content...)
+	return Container("h6")(content...)
 }
 
 func Head(content ...view.View) view.ModificationApplyer {
-	return base.Container("head")(content...)
+	return Container("head")(content...)
 }
 
 func Header(content ...view.View) view.ModificationApplyer {
-	return base.Container("header")(content...)
+	return Container("header")(content...)
 }
 
 func Hgroup(content ...view.View) view.ModificationApplyer {
-	return base.Container("hgroup")(content...)
+	return Container("hgroup")(content...)
 }
 
 func Hr(content ...view.View) view.ModificationApplyer {
-	return base.Container("hr")(content...)
+	return Container("hr")(content...)
 }
 
 func Html(content ...view.View) view.ModificationApplyer {
-	return base.Container("html")(content...)
+	return Container("html")(content...)
 }
 
 func I(content ...view.View) view.ModificationApplyer {
-	return base.Container("i")(content...)
+	return Container("i")(content...)
 }
 
 func Iframe(content ...view.View) view.ModificationApplyer {
-	return base.Container("iframe")(content...)
+	return Container("iframe")(content...)
 }
 
 func Img() view.ModificationApplyer {
-	return base.Inline("img")
+	return Inline("img")
 }
 
 func Input() view.ModificationApplyer {
-	return base.Inline("input")
+	return Inline("input")
 }
 
 func Ins(content ...view.View) view.ModificationApplyer {
-	return base.Container("ins")(content...)
+	return Container("ins")(content...)
 }
 
 func Kbd(content ...view.View) view.ModificationApplyer {
-	return base.Container("kbd")(content...)
+	return Container("kbd")(content...)
 }
 
 func Label(content ...view.View) view.ModificationApplyer {
-	return base.Container("label")(content...)
+	return Container("label")(content...)
 }
 
 func Legend(content ...view.View) view.ModificationApplyer {
-	return base.Container("legend")(content...)
+	return Container("legend")(content...)
 }
 
 func Li(content ...view.View) view.ModificationApplyer {
-	return base.Container("li")(content...)
+	return Container("li")(content...)
 }
 
 func Link() view.ModificationApplyer {
-	return base.Inline("link")
+	return Inline("link")
 }
 
 func Main(content ...view.View) view.ModificationApplyer {
-	return base.Container("main")(content...)
+	return Container("main")(content...)
 }
 
 func Map(content ...view.View) view.ModificationApplyer {
-	return base.Container("map")(content...)
+	return Container("map")(content...)
 }
 
 func Mark(content ...view.View) view.ModificationApplyer {
-	return base.Container("mark")(content...)
+	return Container("mark")(content...)
 }
 
 func Menu(content ...view.View) view.ModificationApplyer {
-	return base.Container("menu")(content...)
+	return Container("menu")(content...)
 }
 
 func Menuitem(content ...view.View) view.ModificationApplyer {
-	return base.Container("menuitem")(content...)
+	return Container("menuitem")(content...)
 }
 
 func Meta() view.ModificationApplyer {
-	return base.Inline("meta")
+	return Inline("meta")
 }
 
 func Meter(content ...view.View) view.ModificationApplyer {
-	return base.Container("meter")(content...)
+	return Container("meter")(content...)
 }
 
 func Nav(content ...view.View) view.ModificationApplyer {
-	return base.Container("nav")(content...)
+	return Container("nav")(content...)
 }
 
 func Noscript(content ...view.View) view.ModificationApplyer {
-	return base.Container("noscript")(content...)
+	return Container("noscript")(content...)
 }
 
 func Object(content ...view.View) view.ModificationApplyer {
-	return base.Container("object")(content...)
+	return Container("object")(content...)
 }
 
 func Ol(content ...view.View) view.ModificationApplyer {
-	return base.Container("ol")(content...)
+	return Container("ol")(content...)
 }
 
 func Optgroup(content ...view.View) view.ModificationApplyer {
-	return base.Container("optgroup")(content...)
+	return Container("optgroup")(content...)
 }
 
 func Option(content ...view.View) view.ModificationApplyer {
-	return base.Container("option")(content...)
+	return Container("option")(content...)
 }
 
 func Output(content ...view.View) view.ModificationApplyer {
-	return base.Container("output")(content...)
+	return Container("output")(content...)
 }
 
 func P(content ...view.View) view.ModificationApplyer {
-	return base.Container("p")(content...)
+	return Container("p")(content...)
 }
 
 func Param() view.ModificationApplyer {
-	return base.Inline("param")
+	return Inline("param")
 }
 
 func Pre(content ...view.View) view.ModificationApplyer {
-	return base.Container("pre")(content...)
+	return Container("pre")(content...)
 }
 
 func Progress(content ...view.View) view.ModificationApplyer {
-	return base.Container("progress")(content...)
+	return Container("progress")(content...)
 }
 
 func Q(content ...view.View) view.ModificationApplyer {
-	return base.Container("q")(content...)
+	return Container("q")(content...)
 }
 
 func Rp(content ...view.View) view.ModificationApplyer {
-	return base.Container("rp")(content...)
+	return Container("rp")(content...)
 }
 
 func Rt(content ...view.View) view.ModificationApplyer {
-	return base.Container("rt")(content...)
+	return Container("rt")(content...)
 }
 
 func Ruby(content ...view.View) view.ModificationApplyer {
-	return base.Container("ruby")(content...)
+	return Container("ruby")(content...)
 }
 
 func S(content ...view.View) view.ModificationApplyer {
-	return base.Container("s")(content...)
+	return Container("s")(content...)
 }
 
 func Samp(content ...view.View) view.ModificationApplyer {
-	return base.Container("samp")(content...)
+	return Container("samp")(content...)
 }
 
 func Script(content ...view.View) view.ModificationApplyer {
-	return base.Container("script")(content...)
+	return Container("script")(content...)
 }
 
 func Section(content ...view.View) view.ModificationApplyer {
-	return base.Container("section")(content...)
+	return Container("section")(content...)
 }
 
 func Select(content ...view.View) view.ModificationApplyer {
-	return base.Container("select")(content...)
+	return Container("select")(content...)
 }
 
 func Small(content ...view.View) view.ModificationApplyer {
-	return base.Container("small")(content...)
+	return Container("small")(content...)
 }
 
 func Source() view.ModificationApplyer {
-	return base.Inline("source")
+	return Inline("source")
 }
 
 func Span(content ...view.View) view.ModificationApplyer {
-	return base.Container("span")(content...)
+	return Container("span")(content...)
 }
 
 func Strong(content ...view.View) view.ModificationApplyer {
-	return base.Container("strong")(content...)
+	return Container("strong")(content...)
 }
 
 func Style(content ...view.View) view.ModificationApplyer {
-	return base.Container("style")(content...)
+	return Container("style")(content...)
 }
 
 func Sub(content ...view.View) view.ModificationApplyer {
-	return base.Container("sub")(content...)
+	return Container("sub")(content...)
 }
 
 func Summary(content ...view.View) view.ModificationApplyer {
-	return base.Container("summary")(content...)
+	return Container("summary")(content...)
 }
 
 func Sup(content ...view.View) view.ModificationApplyer {
-	return base.Container("sup")(content...)
+	return Container("sup")(content...)
 }
 
 func Table(content ...view.View) view.ModificationApplyer {
-	return base.Container("table")(content...)
+	return Container("table")(content...)
 }
 
 func Tbody(content ...view.View) view.ModificationApplyer {
-	return base.Container("tbody")(content...)
+	return Container("tbody")(content...)
 }
 
 func Td(content ...view.View) view.ModificationApplyer {
-	return base.Container("td")(content...)
+	return Container("td")(content...)
 }
 
 func Textarea(content ...view.View) view.ModificationApplyer {
-	return base.Container("textarea")(content...)
+	return Container("textarea")(content...)
 }
 
 func Tfoot(content ...view.View) view.ModificationApplyer {
-	return base.Container("tfoot")(content...)
+	return Container("tfoot")(content...)
 }
 
 func Th(content ...view.View) view.ModificationApplyer {
-	return base.Container("th")(content...)
+	return Container("th")(content...)
 }
 
 func Thead(content ...view.View) view.ModificationApplyer {
-	return base.Container("thead")(content...)
+	return Container("thead")(content...)
 }
 
 func Time(content ...view.View) view.ModificationApplyer {
-	return base.Container("time")(content...)
+	return Container("time")(content...)
 }
 
 func Title(content ...view.View) view.ModificationApplyer {
-	return base.Container("title")(content...)
+	return Container("title")(content...)
 }
 
 func Tr(content ...view.View) view.ModificationApplyer {
-	return base.Container("tr")(content...)
+	return Container("tr")(content...)
 }
 
 func Track() view.ModificationApplyer {
-	return base.Inline("track")
+	return Inline("track")
 }
 
 func U(content ...view.View) view.ModificationApplyer {
-	return base.Container("u")(content...)
+	return Container("u")(content...)
 }
 
 func Ul(content ...view.View) view.ModificationApplyer {
-	return base.Container("ul")(content...)
+	return Container("ul")(content...)
 }
 
 func Var(content ...view.View) view.ModificationApplyer {
-	return base.Container("var")(content...)
+	return Container("var")(content...)
 }
 
 func Video(content ...view.View) view.ModificationApplyer {
-	return base.Container("video")(content...)
+	return Container("video")(content...)
 }
 
 func Wbr() view.ModificationApplyer {
-	return base.Inline("wbr")
+	return Inline("wbr")
 }

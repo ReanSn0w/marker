@@ -1,4 +1,4 @@
-package base
+package marker
 
 import (
 	"context"
@@ -7,34 +7,16 @@ import (
 	"github.com/ReanSn0w/gew/v2/pkg/view"
 )
 
-type ContainerTagName string
-
-func Container(tag ContainerTagName) view.Builder {
-	return func(content ...view.View) view.ModificationApplyer {
-		return view.NewModificationApplyer(&containerTag{
-			tag:        tag,
-			attributes: Attributes{},
-			content: func() view.View {
-				group := []view.View{}
-
-				for _, c := range content {
-					v, ok := c.(view.View)
-
-					if !ok {
-						return view.External(content)
-					}
-
-					group = append(group, v)
-				}
-
-				return view.Group(group...)
-			}(),
-		})
-	}
+func Container(tag string, content ...view.View) view.ModificationApplyer {
+	return view.NewModificationApplyer(&containerTag{
+		tag:        tag,
+		attributes: Attributes{},
+		content:    view.Group(content...),
+	})
 }
 
 type containerTag struct {
-	tag        ContainerTagName
+	tag        string
 	attributes Attributes
 	content    view.View
 }
@@ -80,4 +62,12 @@ func (i *containerTag) Build(ctx context.Context, wr io.Writer) {
 	wr.Write([]byte("\n</"))
 	wr.Write([]byte(string(i.tag)))
 	wr.Write([]byte(">"))
+}
+
+// MARK: - Attribute Modificator
+
+func PlaceInContainer(tag string) view.Modificator {
+	return func(v view.View) view.View {
+		return Container(tag)(v)()
+	}
 }

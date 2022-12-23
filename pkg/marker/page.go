@@ -1,12 +1,10 @@
-package page
+package marker
 
 import (
 	"context"
 	"io"
 
 	"github.com/ReanSn0w/gew/v2/pkg/view"
-	"github.com/ReanSn0w/marker/pkg/base"
-	"github.com/ReanSn0w/marker/pkg/markup"
 )
 
 type PageInterface interface {
@@ -18,25 +16,25 @@ func Page(headers ...view.View) func(content ...view.View) PageInterface {
 		return &page{
 			headers: headers,
 			content: content,
-			builder: base.NewBuilder(),
+			builder: NewBuilder(),
 		}
 	}
 }
 
 type page struct {
-	builder base.Builder
+	builder Builder
 	headers []view.View
 	content []view.View
 }
 
 func (p *page) Body(ctx context.Context) view.View {
 	return view.Group(
-		markup.Doctype(),
-		markup.Html(
-			markup.Head(
+		Doctype(),
+		Html(
+			Head(
 				p.headers...,
 			),
-			markup.Body(
+			Body(
 				p.content...,
 			),
 		),
