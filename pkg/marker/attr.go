@@ -77,7 +77,7 @@ func DeleteAttribute(key string) view.Modificator {
 func getAttributeEditor(v view.View) AttributeEditor {
 	item, ok := v.(AttributeEditor)
 	if !ok {
-		item = Container("div")(v)().(*containerTag)
+		item = Container("div", v)().(*containerTag)
 	}
 
 	return item

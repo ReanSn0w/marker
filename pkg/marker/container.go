@@ -68,6 +68,6 @@ func (i *containerTag) Build(ctx context.Context, wr io.Writer) {
 
 func PlaceInContainer(tag string) view.Modificator {
 	return func(v view.View) view.View {
-		return Container(tag)(v)()
+		return Container(tag, v)()
 	}
 }
