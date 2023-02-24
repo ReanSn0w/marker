@@ -41,9 +41,11 @@ func (n *Node) Build(ctx context.Context, wr io.Writer) {
 			wr.Write([]byte("\n"))
 			wr.Write([]byte(fmt.Sprintf("%v", n.Content)))
 		}
-	}
 
-	wr.Write([]byte(fmt.Sprintf("\n</%s>", n.Name)))
+		wr.Write([]byte(fmt.Sprintf("\n</%s>", n.Name)))
+	} else {
+		wr.Write([]byte(fmt.Sprintf("</%s>", n.Name)))
+	}
 }
 
 // MARK: - Инициализация тегов
