@@ -55,11 +55,15 @@ func (i *containerTag) Build(ctx context.Context, wr io.Writer) {
 		wr.Write([]byte(" "))
 		wr.Write([]byte(val))
 	}
-	wr.Write([]byte(">\n"))
+	wr.Write([]byte(">"))
 
-	GetBuilderFromContext(ctx).Build(ctx, wr, i.content)
+	if i.content != nil {
+		wr.Write([]byte("\n"))
+		GetBuilderFromContext(ctx).Build(ctx, wr, i.content)
+		wr.Write([]byte("\n"))
+	}
 
-	wr.Write([]byte("\n</"))
+	wr.Write([]byte("</"))
 	wr.Write([]byte(string(i.tag)))
 	wr.Write([]byte(">"))
 }
