@@ -59,7 +59,7 @@ func (i *containerTag) Build(ctx context.Context, wr io.Writer) {
 
 	if i.content != nil {
 		wr.Write([]byte("\n"))
-		GetBuilderFromContext(ctx).Build(ctx, wr, i.content)
+		NewBuilder().Build(ctx, wr, i.content)
 		wr.Write([]byte("\n"))
 	}
 
