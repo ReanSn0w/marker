@@ -9,8 +9,15 @@ import (
 
 func Container(tag string, content ...view.View) view.ModificationApplyer {
 	var contentGroup view.View = nil
-	if len(content) > 0 {
-		contentGroup = view.Group(content...)
+
+	// Так как на textarea дурно влияют переходы строк
+	// необходимо убедиться что, какой-либо контент
+	// был передан в функцию
+	for i := range content {
+		if content[i] != nil {
+			contentGroup = view.Group(content...)
+			break
+		}
 	}
 
 	return view.NewModificationApplyer(&containerTag{
@@ -70,7 +77,7 @@ func (i *containerTag) Build(ctx context.Context, wr io.Writer) {
 
 	wr.Write([]byte("</"))
 	wr.Write([]byte(string(i.tag)))
-	wr.Write([]byte(">"))
+	wr.Write([]byte(">\n"))
 }
 
 // MARK: - Attribute Modificator
