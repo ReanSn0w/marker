@@ -8,10 +8,15 @@ import (
 )
 
 func Container(tag string, content ...view.View) view.ModificationApplyer {
+	var contentGroup view.View = nil
+	if len(content) > 0 {
+		contentGroup = view.Group(content...)
+	}
+
 	return view.NewModificationApplyer(&containerTag{
 		tag:        tag,
 		attributes: Attributes{},
-		content:    view.Group(content...),
+		content:    contentGroup,
 	})
 }
 
