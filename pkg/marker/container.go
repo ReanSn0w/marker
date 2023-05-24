@@ -61,23 +61,22 @@ func (i *containerTag) Delete(key string) {
 // MARK: - Builder
 
 func (i *containerTag) Build(ctx context.Context, wr io.Writer) {
-	wr.Write([]byte("<"))
+	wr.Write([]byte("\n<"))
 	wr.Write([]byte(string(i.tag)))
 	if val := i.attributes.build(); val != "" {
-		wr.Write([]byte(" "))
-		wr.Write([]byte(val))
+		wr.Write([]byte(" " + val))
 	}
 	wr.Write([]byte(">"))
 
 	if i.content != nil {
 		wr.Write([]byte("\n"))
-		NewBuilder().Build(ctx, wr, i.content)
+		NewBuilder(nil).Build(ctx, wr, i.content)
 		wr.Write([]byte("\n"))
 	}
 
 	wr.Write([]byte("</"))
 	wr.Write([]byte(string(i.tag)))
-	wr.Write([]byte(">\n"))
+	wr.Write([]byte(">"))
 }
 
 // MARK: - Attribute Modificator

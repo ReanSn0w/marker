@@ -16,7 +16,7 @@ func Page(headers ...view.View) func(content ...view.View) PageInterface {
 		return &page{
 			headers: headers,
 			content: content,
-			builder: NewBuilder(),
+			builder: NewBuilder(nil),
 		}
 	}
 }

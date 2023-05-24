@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"log"
 
 	"github.com/ReanSn0w/gew/v2/pkg/view"
 )
@@ -15,11 +14,17 @@ type Builder interface {
 	Build(ctx context.Context, wr io.Writer, item view.View)
 }
 
-func NewBuilder() Builder {
-	return &builder{}
+type Logger interface {
+	Logf(format string, args ...interface{})
 }
 
-type builder struct{}
+func NewBuilder(logger Logger) Builder {
+	return &builder{logger: logger}
+}
+
+type builder struct {
+	logger Logger
+}
 
 type builderItem interface {
 	Build(ctx context.Context, wr io.Writer)
@@ -41,12 +46,20 @@ func (b *builder) Build(ctx context.Context, wr io.Writer, item view.View) {
 				wr.Write([]byte(fmt.Sprint(t)))
 			case string:
 				wr.Write([]byte(t))
+			case error:
+				b.log("WARN: builder: error detected. Err: %s", t.Error())
 			default:
-				log.Println(t)
+				b.log("WARN: unknown type %T, value will be rendered", t)
 				wr.Write([]byte(fmt.Sprintf("%v", t)))
 			}
 		},
 	)
+}
+
+func (b *builder) log(format string, args ...interface{}) {
+	if b.logger != nil {
+		b.logger.Logf(format, args...)
+	}
 }
 
 // type builderContextKey struct{}

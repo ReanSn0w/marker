@@ -22,6 +22,10 @@ func Snippet(snippet string, values ...interface{}) view.View {
 	return view.External(fmt.Sprintf(snippet, values...))
 }
 
+func Error(err error) view.View {
+	return view.External(err)
+}
+
 // MARK: - HTML Tags
 
 func A(content ...view.View) view.ModificationApplyer {
