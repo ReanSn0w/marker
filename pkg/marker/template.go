@@ -8,18 +8,14 @@ import (
 	"github.com/ReanSn0w/gew/v2/pkg/view"
 )
 
-func NewTemplate() *Template {
+func NewTemplate(prepare func(*template.Template) *template.Template) *Template {
 	return &Template{
-		tmpl: template.New("render"),
+		tmpl: prepare(template.New("template")),
 	}
 }
 
 type Template struct {
 	tmpl *template.Template
-}
-
-func (r *Template) Prepare(prepare func(*template.Template) *template.Template) {
-	r.tmpl = prepare(r.tmpl)
 }
 
 func (r *Template) Make(name string, data any) view.View {
