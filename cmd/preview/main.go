@@ -5,31 +5,34 @@ import (
 
 	"github.com/ReanSn0w/gew/v3/pkg/view"
 	"github.com/ReanSn0w/marker/pkg/mk"
+	"github.com/ReanSn0w/marker/pkg/tag"
 )
 
 func main() {
 	previewElement(
 		mk.Text("Hello World!"),
-		mk.NewTag(false, "div")(
-			mk.Text("Hi, how are you?"),
+		tag.Div(
+			tag.Div(
+				mk.Text("Hello"),
+			)(
+				mk.WithStyle("", mk.Declarations{
+					"background-color": "blue",
+					"height":           "30px",
+				}),
+			),
+			tag.Div(
+				mk.Text("Hello"),
+			)(
+				mk.WithStyle("", mk.Declarations{
+					"background-color": "green",
+					"height":           "30px",
+				}),
+			),
 		)(
-			mk.WithRuleStyle(
-				"media (min-width: 768px) and (max-width: 1024px)",
-				"",
-				mk.Declarations{
-					"animation":          "ease",
-					"animation-duration": ".5s",
-					"background-color":   "blue",
-				},
-			),
-			mk.WithRuleStyle(
-				"media (min-width: 768px) and (max-width: 1024px)",
-				":hover",
-				mk.Declarations{
-					"background-color": "red",
-				},
-			),
-			mk.Class("my_element"),
+			mk.WithStyle("", mk.Declarations{
+				"background-color": "red",
+				"height":           "1000px",
+			}),
 		),
 	)
 }
