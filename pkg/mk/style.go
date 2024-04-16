@@ -10,7 +10,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ReanSn0w/gew/v2/pkg/view"
+	"github.com/ReanSn0w/gew/v3/pkg/view"
 )
 
 // MARK: Class
@@ -201,7 +201,6 @@ func (s *Style) append(rule atRule, selector selector, prop Property, val Value)
 	}
 
 	s.styles[rule][selector][prop] = val
-	fmt.Println(s)
 }
 
 func (s *Style) set(ctx context.Context) context.Context {

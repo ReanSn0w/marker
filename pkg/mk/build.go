@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/ReanSn0w/gew/v2/pkg/view"
+	"github.com/ReanSn0w/gew/v3/pkg/view"
 )
 
 func Build(ctx context.Context, wr io.Writer, element view.View) error {
@@ -15,7 +15,7 @@ func Build(ctx context.Context, wr io.Writer, element view.View) error {
 }
 
 func build(ctx context.Context, wr io.Writer, element view.View) {
-	view.Build(element, ctx, func(i interface{}, ctx context.Context) {
+	view.Builder(ctx, element, func(ctx context.Context, i interface{}) {
 		switch el := i.(type) {
 		case *Page:
 			el.build(ctx, wr)
@@ -31,9 +31,9 @@ func build(ctx context.Context, wr io.Writer, element view.View) {
 
 // MARK: Tag
 
-func NewTag(inline bool, name string) func(content ...view.View) view.ModificationApplyer {
-	return func(content ...view.View) view.ModificationApplyer {
-		return view.NewModificationApplyer(&Tag{
+func NewTag(inline bool, name string) func(content ...view.View) view.Use {
+	return func(content ...view.View) view.Use {
+		return view.NewView(&Tag{
 			inline:  inline,
 			name:    name,
 			content: view.Group(content...),
