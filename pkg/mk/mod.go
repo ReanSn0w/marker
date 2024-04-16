@@ -10,7 +10,10 @@ import (
 // Class - Устанавливает класс для ближайшего
 // ребенка в контекст выполнения
 func Class(value string) view.Mod {
-	return view.Context(classCtxKey, class(value))
+	return view.ContextModificator(func(ctx context.Context) context.Context {
+		getClassStorage(ctx).set(class(value))
+		return ctx
+	})
 }
 
 // Set - Устанавливает атрибут к ближайшему
@@ -81,7 +84,7 @@ func WithRuleStyle(rule string, sel string, dec Declarations) view.Mod {
 	return func(v view.View) view.View {
 		return view.Closure(func(ctx context.Context) view.View {
 			style := getStyle(ctx)
-			class := getClass(ctx)
+			class := getClassStorage(ctx).get()
 			s := selector(fmt.Sprintf(".G%s%s", class, sel))
 
 			for p, v := range dec {

@@ -21,37 +21,75 @@ import (
 //
 
 var (
-	emptyClass        class = ""
-	objectIDCounter         = readRandomUint32()
-	classCtxKey             = "class_ctx_key"
-	ignoreClassCtxKey       = "ignore_class_ctx_key"
+	emptyClass      class = ""
+	objectIDCounter       = readRandomUint32()
+	classCtxKey           = "class_ctx_key"
 )
 
 type (
 	class string
+
+	ClassStorage struct {
+		enabled bool
+		current *class
+	}
 )
 
-// getClass - Производит получение класса элемента из котекста
-// в случае отсутствия класс, генерируется новое уникальное
-// значение класса.
-//
-// [ВАЖНО!] если класс небыл установлен заранее, функция будет возвращать новое название
-// класса во время каждого вызова
-func getClass(ctx context.Context) class {
-	val := ctx.Value(classCtxKey)
-	c, ok := val.(class)
+func addClassStorage(ctx context.Context) context.Context {
+	return context.WithValue(ctx, classCtxKey, &ClassStorage{enabled: true})
+}
 
-	if !ok || c == emptyClass {
-		return newClass(time.Now())
+func getClassStorage(ctx context.Context) *ClassStorage {
+	value := ctx.Value(classCtxKey)
+	return value.(*ClassStorage)
+}
+
+func (c *ClassStorage) get() class {
+	if c.current == nil {
+		return emptyClass
 	}
 
-	return c
+	return *c.current
 }
 
-func ignoreClass(ctx context.Context) bool {
-	_, ok := ctx.Value(ignoreClassCtxKey).(struct{})
-	return ok
+func (c *ClassStorage) set(class class) {
+	c.current = &class
 }
+
+func (c *ClassStorage) reset() {
+	cl := newClass(time.Now())
+	c.current = &cl
+}
+
+func (c *ClassStorage) enable() {
+	c.enabled = true
+}
+
+func (c *ClassStorage) disable() {
+	c.enabled = false
+}
+
+// // getClass - Производит получение класса элемента из котекста
+// // в случае отсутствия класс, генерируется новое уникальное
+// // значение класса.
+// //
+// // [ВАЖНО!] если класс небыл установлен заранее, функция будет возвращать новое название
+// // класса во время каждого вызова
+// func getClass(ctx context.Context) class {
+// 	val := ctx.Value(classCtxKey)
+// 	c, ok := val.(class)
+
+// 	if !ok || c == emptyClass {
+// 		return newClass(time.Now())
+// 	}
+
+// 	return c
+// }
+
+// func ignoreClass(ctx context.Context) bool {
+// 	_, ok := ctx.Value(ignoreClassCtxKey).(struct{})
+// 	return ok
+// }
 
 func newClass(timestamp time.Time) class {
 	var b [7]byte

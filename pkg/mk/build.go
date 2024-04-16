@@ -10,6 +10,7 @@ import (
 
 func Build(ctx context.Context, wr io.Writer, element view.View) error {
 	// TODO := implement context cancel reaction
+	ctx = addClassStorage(ctx)
 	build(ctx, wr, element)
 	return nil
 }
@@ -54,9 +55,11 @@ func (t *Tag) Body(ctx context.Context) view.View {
 func (t *Tag) build(ctx context.Context, wr io.Writer) {
 	attr := getAttributes(ctx)
 
-	if !ignoreClass(ctx) {
-		attr["class"] = Value("G" + getClass(ctx))
+	if getClassStorage(ctx).enabled {
+		attr["class"] = Value("G" + getClassStorage(ctx).get())
 	}
+
+	getClassStorage(ctx).reset()
 
 	wr.Write([]byte(fmt.Sprintf("<%s", t.name)))
 	attr.write(wr)

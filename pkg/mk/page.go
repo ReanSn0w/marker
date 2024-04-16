@@ -13,9 +13,18 @@ func NewPage(head ...view.View) func(body ...view.View) *Page {
 	return func(body ...view.View) *Page {
 		return &Page{
 			Lang: "ru",
-			body: view.Group(body...),
+			body: view.Group(body...)(
+				view.ContextModificator(func(ctx context.Context) context.Context {
+					getClassStorage(ctx).reset()
+					getClassStorage(ctx).enable()
+					return ctx
+				}),
+			),
 			head: view.Group(head...)(
-				view.Context(ignoreClassCtxKey, struct{}{}),
+				view.ContextModificator(func(ctx context.Context) context.Context {
+					getClassStorage(ctx).disable()
+					return ctx
+				}),
 			),
 		}
 	}
