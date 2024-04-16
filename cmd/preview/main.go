@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/ReanSn0w/gew/v2/pkg/view"
+	"github.com/ReanSn0w/gew/v3/pkg/view"
 	"github.com/ReanSn0w/marker/pkg/mk"
 )
 

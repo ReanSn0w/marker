@@ -6,7 +6,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/ReanSn0w/gew/v2/pkg/view"
+	"github.com/ReanSn0w/gew/v3/pkg/view"
 )
 
 func NewPage(head ...view.View) func(body ...view.View) *Page {
