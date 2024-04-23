@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/ReanSn0w/gew/v3/pkg/view"
+	"github.com/ReanSn0w/marker/pkg/primitive"
 )
 
 func NewPage(head ...view.View) func(body ...view.View) *Page {
@@ -15,14 +16,13 @@ func NewPage(head ...view.View) func(body ...view.View) *Page {
 			Lang: "ru",
 			body: view.Group(body...)(
 				view.ContextModificator(func(ctx context.Context) context.Context {
-					getClassStorage(ctx).reset()
-					getClassStorage(ctx).enable()
+					primitive.Get(ctx).DisableStyle()
 					return ctx
 				}),
 			),
 			head: view.Group(head...)(
 				view.ContextModificator(func(ctx context.Context) context.Context {
-					getClassStorage(ctx).disable()
+					primitive.Get(ctx).EnableStyle()
 					return ctx
 				}),
 			),
@@ -48,15 +48,15 @@ func (p *Page) Body(ctx context.Context) view.View {
 }
 
 func (p *Page) build(ctx context.Context, wr io.Writer) {
-	ctx, style := newStyle(ctx)
 	body := p.buildPart(ctx, p.body)
-	head := p.buildPart(ctx, view.Group(p.head, style))
+	head := p.buildPart(ctx, p.head)
+	style := p.buildPart(ctx, Style())
 
 	wr.Write([]byte("<!doctype html>"))
 	wr.Write([]byte("<html lang=\"" + p.Lang + "\">"))
 	wr.Write([]byte("<head>"))
 	wr.Write(head)
-	style.build(wr)
+	wr.Write(style)
 	wr.Write([]byte("</head>"))
 	wr.Write([]byte("<body>"))
 	wr.Write(body)
