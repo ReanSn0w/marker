@@ -1,4 +1,4 @@
-package primitive
+package common
 
 const (
 	EmptyValue Value = ""

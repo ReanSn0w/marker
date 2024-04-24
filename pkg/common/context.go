@@ -1,4 +1,4 @@
-package primitive
+package common
 
 import (
 	"context"
@@ -19,6 +19,14 @@ func Set(ctx context.Context) context.Context {
 		stylesEnabled: true,
 		styles:        make(atRules),
 	})
+}
+
+func SetIfNeed(ctx context.Context) context.Context {
+	if _, ok := ctx.Value(globalContextKey).(*GlobalData); !ok {
+		return Set(ctx)
+	}
+
+	return ctx
 }
 
 type (
@@ -50,12 +58,17 @@ func (gd *GlobalData) ElementData() *ElementData {
 }
 
 func (gd *GlobalData) ExtractData() map[Key]Value {
-	if gd.stylesEnabled {
-		gd.appendStyles(gd.element.class, gd.element.style)
+	var res map[Key]Value
+
+	if gd.element != nil {
+		if gd.stylesEnabled {
+			gd.appendStyles(gd.element.class, gd.element.style)
+		}
+
+		gd.element.attributes["class"] = Value("G" + gd.element.class)
+		res = gd.element.attributes
 	}
 
-	gd.element.attributes["class"] = Value("G" + gd.element.class)
-	res := gd.element.attributes
 	gd.element = nil
 	return res
 }
@@ -111,7 +124,7 @@ func (gd *GlobalData) appendStyles(class string, styles atRules) {
 	for rule, selectors := range styles {
 		for selector, declarations := range selectors {
 			for key, value := range declarations {
-				gd.styles.append(rule, Selector("G"+class)+selector, key, value)
+				gd.styles.append(rule, Selector(".G"+class)+selector, key, value)
 			}
 		}
 	}
