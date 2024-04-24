@@ -6,24 +6,26 @@ import (
 	"io"
 
 	"github.com/ReanSn0w/gew/v3/pkg/view"
-	"github.com/ReanSn0w/marker/pkg/primitive"
+	"github.com/ReanSn0w/marker/pkg/common"
 )
 
 func Build(ctx context.Context, wr io.Writer, element view.View) error {
-	ctx = primitive.Set(ctx)
+	ctx = common.SetIfNeed(ctx)
 	build(ctx, wr, element)
 	return nil
+}
+
+type BuildItem interface {
+	Build(ctx context.Context, wr io.Writer)
 }
 
 func build(ctx context.Context, wr io.Writer, element view.View) {
 	view.Builder(ctx, element, func(ctx context.Context, i interface{}) {
 		switch el := i.(type) {
-		case *Page:
-			el.build(ctx, wr)
+		case BuildItem:
+			el.Build(ctx, wr)
 		case *Tag:
 			el.build(ctx, wr)
-		case *style:
-			el.write(ctx, wr)
 		case Text:
 			wr.Write([]byte(el))
 		}
@@ -53,7 +55,7 @@ func (t *Tag) Body(ctx context.Context) view.View {
 }
 
 func (t *Tag) build(ctx context.Context, wr io.Writer) {
-	attr := primitive.Get(ctx).ExtractData()
+	attr := common.Get(ctx).ExtractData()
 
 	wr.Write([]byte(fmt.Sprintf("<%s", t.name)))
 
@@ -92,11 +94,11 @@ func Style() view.View {
 type style struct{}
 
 func (s *style) Body(ctx context.Context) view.View {
-	return nil
+	return view.External(s)
 }
 
-func (s *style) write(ctx context.Context, wr io.Writer) {
-	globalData := primitive.Get(ctx)
+func (s *style) Build(ctx context.Context, wr io.Writer) {
+	globalData := common.Get(ctx)
 	wr.Write([]byte("<style>"))
 	globalData.WriteStyle(wr)
 	wr.Write([]byte("</style>"))

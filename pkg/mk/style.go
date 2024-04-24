@@ -4,46 +4,46 @@ import (
 	"context"
 
 	"github.com/ReanSn0w/gew/v3/pkg/view"
-	"github.com/ReanSn0w/marker/pkg/primitive"
+	"github.com/ReanSn0w/marker/pkg/common"
 )
 
 func WithStyle() *StyleConfig {
 	return &StyleConfig{
-		Value: make(map[string]string),
+		values: make(map[string]string),
 	}
 }
 
 type StyleConfig struct {
-	Rule     string
-	Selector string
-	Value    map[string]string
+	rule     string
+	selector string
+	values   map[string]string
 }
 
-func (s *StyleConfig) WithRule(rule string) *StyleConfig {
-	s.Rule = rule
+func (s *StyleConfig) Rule(rule string) *StyleConfig {
+	s.rule = rule
 	return s
 }
 
-func (s *StyleConfig) WithSelector(selector string) *StyleConfig {
-	s.Selector = selector
+func (s *StyleConfig) Selector(selector string) *StyleConfig {
+	s.selector = selector
 	return s
 }
 
-func (s *StyleConfig) WithValue(key, val string) *StyleConfig {
-	s.Value[key] = val
+func (s *StyleConfig) Value(key, val string) *StyleConfig {
+	s.values[key] = val
 	return s
 }
 
 func (s *StyleConfig) Extract() view.Mod {
 	return view.ContextModificator(func(ctx context.Context) context.Context {
-		elementData := primitive.Get(ctx).ElementData()
+		elementData := common.Get(ctx).ElementData()
 
-		for key, val := range s.Value {
+		for key, val := range s.values {
 			elementData.SetStyle(
-				primitive.AtRule(s.Rule),
-				primitive.Selector(s.Selector),
-				primitive.Key(key),
-				primitive.Value(val))
+				common.AtRule(s.rule),
+				common.Selector(s.selector),
+				common.Key(key),
+				common.Value(val))
 		}
 
 		return ctx
