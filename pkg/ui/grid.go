@@ -5,34 +5,62 @@ import (
 
 	"github.com/ReanSn0w/gew/v3/pkg/view"
 	"github.com/ReanSn0w/marker/pkg/mk"
-	"github.com/ReanSn0w/marker/pkg/tag"
 )
 
-func NewGridPreference(v, h string, columns ...string) GridPreference {
-	return GridPreference{
-		Vertical:   v,
-		Horizontal: h,
-		Columns:    columns,
-	}
+func Grid() *grid {
+	return &grid{}
 }
 
-type GridPreference struct {
-	Vertical   string
-	Horizontal string
-	Columns    []string
+type grid struct {
+	rule     string
+	selector string
+	vGap     Size
+	hGap     Size
+	columns  []Size
 }
 
-func Grid(pref GridPreference) func(content ...view.View) view.Use {
-	return func(content ...view.View) view.Use {
-		return view.NewView(
-			tag.Div(content...)(
-				mk.WithStyle().
-					WithValue("display", "grid").
-					WithValue("grid-template-columns", strings.Join(pref.Columns, " ")).
-					WithValue("grid-column-gap", pref.Horizontal).
-					WithValue("grid-row-gap", pref.Vertical).
-					Extract(),
-			),
-		)
+func (g *grid) columnsString() string {
+	sizes := []string{}
+
+	for _, size := range g.columns {
+		sizes = append(sizes, size.Size())
 	}
+
+	return strings.Join(sizes, " ")
+}
+
+func (g *grid) Columns(sizes ...Size) *grid {
+	g.columns = append(g.columns, sizes...)
+	return g
+}
+
+func (g *grid) Rule(rule string) *grid {
+	g.rule = rule
+	return g
+}
+
+func (g *grid) Selector(selector string) *grid {
+	g.selector = selector
+	return g
+}
+
+func (g *grid) VGap(size Size) *grid {
+	g.vGap = size
+	return g
+}
+
+func (g *grid) HGap(size Size) *grid {
+	g.hGap = size
+	return g
+}
+
+func (g *grid) Extract() view.Mod {
+	return mk.WithStyle().
+		Selector(g.selector).
+		Rule(g.rule).
+		Value("display", "grid").
+		Value("grid-template-columns", g.columnsString()).
+		Value("grid-column-gap", g.hGap.Size()).
+		Value("grid-row-gap", g.vGap.Size()).
+		Extract()
 }
