@@ -22,7 +22,7 @@ func (p *Page) Body(ctx context.Context) view.View {
 }
 
 func (p *Page) Build(ctx context.Context, wr io.Writer) {
-	body := p.buildPart(ctx, view.Group(p.body...)(
+	body := p.buildPart(ctx, view.NewView(view.Group(p.body...)(p.mod...))(
 		view.ContextModificator(func(ctx context.Context) context.Context {
 			common.Get(ctx).EnableStyle()
 			return ctx

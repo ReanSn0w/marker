@@ -19,6 +19,7 @@ type Page struct {
 
 	head []view.View
 	body []view.View
+	mod  []view.Mod
 }
 
 func (p *Page) Lang(lang Lang) *Page {
@@ -33,5 +34,10 @@ func (p *Page) Head(head ...view.View) *Page {
 
 func (p *Page) Content(body ...view.View) *Page {
 	p.body = body
+	return p
+}
+
+func (p *Page) Mod(m ...view.Mod) *Page {
+	p.mod = m
 	return p
 }

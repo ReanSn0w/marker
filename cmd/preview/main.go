@@ -42,6 +42,18 @@ func previewElement(item ...view.View) {
 	http.ListenAndServe(":8080", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		page.New("Preview page").
 			Content(item...).
+			Mod(
+				mk.Class("test"),
+				mk.WithStyle().
+					Value("background-color", "white").
+					Value("color", "black").
+					Extract(),
+				mk.WithStyle().
+					Rule("media (prefers-color-scheme: dark)").
+					Value("background-color", "black").
+					Value("color", "white").
+					Extract()
+			),
 			Write(r.Context(), http.StatusOK, w)
 	}))
 }
